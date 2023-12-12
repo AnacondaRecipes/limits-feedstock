@@ -12,12 +12,13 @@ source:
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv"
 
 requirements:
   host:
     - pip
     - python >=3.7
+    - wheel
   run:
     - python >=3.7
     - setuptools
@@ -25,6 +26,8 @@ requirements:
 test:
   imports:
     - limits
+  commands:
+    - pip check
 
 about:
   home: https://github.com/alisaifee/limits
@@ -36,5 +39,9 @@ about:
   dev_url: https://github.com/alisaifee/limits
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/43927
+    reason: Dependency for slowapi package
   recipe-maintainers:
+    - ianaobi
     - tiefling-cat
