@@ -24,6 +24,8 @@ requirements:
     - setuptools
 
 test:
+  requires:
+    - pip
   imports:
     - limits
   commands:
