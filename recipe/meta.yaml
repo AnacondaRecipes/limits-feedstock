@@ -22,7 +22,9 @@ requirements:
     - wheel
   run:
     - python
-    - setuptools
+    - deprecated >=1.2
+    - packaging >=21,<25
+    - typing_extensions
 
 test:
   imports:
