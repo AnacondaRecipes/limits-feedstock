@@ -39,7 +39,8 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: "Rate limiting utilities"
+  summary: Rate limiting utilities
+  description: Rate limiting using various strategies and storage backends such as redis, memcached & mongodb
   doc_url: https://limits.readthedocs.io/en/stable/
   dev_url: https://github.com/alisaifee/limits
 
