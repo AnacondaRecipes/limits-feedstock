@@ -1,5 +1,5 @@
 {% set name = "limits" %}
-{% set version = "2.2.0" %}
+{% set version = "5.0.0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,31 +7,40 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: da6346f0dcf85f17f0f1cc709c3408a3058cf6fee68313c288127c287237b411
+  sha256: a16f6c60b2cb7ae686e85f630a8e2428f49e06b0d335601ca7e0d756d58db503
 
 build:
   number: 0
-  noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  skip: True  # [py<310]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
-    - python >=3.7
-  run:
-    - python >=3.7
+    - python
     - setuptools
+    - wheel
+  run:
+    - python
+    - deprecated >=1.2
+    - packaging >=21,<25
+    - typing_extensions
 
 test:
   imports:
     - limits
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/alisaifee/limits
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: "Rate limiting utilities"
+  summary: Rate limiting utilities
+  description: Rate limiting using various strategies and storage backends such as redis, memcached & mongodb
   doc_url: https://limits.readthedocs.io/en/stable/
   dev_url: https://github.com/alisaifee/limits
 
