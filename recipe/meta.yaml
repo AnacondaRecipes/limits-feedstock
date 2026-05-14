@@ -18,12 +18,12 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
-    - wheel
+    - hatchling >=1.14.0
+    - hatch-vcs >=0.4.0
   run:
     - python
     - deprecated >=1.2
-    - packaging >=21,<25
+    - packaging >=21
     - typing_extensions
 
 test:
